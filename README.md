@@ -33,7 +33,7 @@ During the first pass the program eliminates any nodes that are not used in the
 shortest path between any pair of end-nodes. This process also identifies
 strongly connected components in the graph and it discards any components which
 are made up of too few nodes (i.e rail). This count can be set by using the
-parameter --component-rail. It defaults to 30, which should be sufficient to
+parameter ```--component-rail```. It defaults to 30, which should be sufficient to
 filter out any rails present in mineshafts in the overworld.
 
 Finally the program seeks to minimize the node count by eliminating any nodes
@@ -48,7 +48,7 @@ in one way or another. Note that there's no data about which way a minecart
 actually would travel in-game.
 
 ###Second pass
-The second-pass is enabled by specifying a value for --distance-cluster,
+The second-pass is enabled by specifying a value for ```--distance-cluster```,
 the recommended value is 40 (used in text below) but it is not set by default.
 
 This pass works heuristically by combining end-nodes that are within the given
@@ -69,11 +69,11 @@ Any cluster-node without an edge will be discarded.
 
 The terms are logical consequences of the two cases. A clustered node with
 only two edges means you will have to leave the minecart and switch to a new
-rail to arrive at a destination, and you only have only option on where to
+rail to arrive at a destination, and you only have one option on where to
 travel. As such, it's a simple switch. The location of the switch might also
 be an intended destination, to treat it as such in the output use the flag
---switch-as-endpoint. If a switch becomes labeled by using the flag
---distance-label it will also be treated as an endpoint.
+```--switch-as-endpoint```. If a switch becomes labeled by using the flag
+```--distance-label``` it will also be treated as an endpoint.
 
 Stations are termed as such due to its multitude of edges, i.e selections in
 your destination.
@@ -100,16 +100,16 @@ section.
 
 ####DOT
 The program was made with the DOT format in mind, and as such it has some
-features which it only supports for the DOT format. If you which to label
-edges with the geometric distance it spans in integer, use --label-edges.
+features which it only supports for the DOT format. If you wish to label
+edges with the geometric distance it spans in integer, use ```--label-edges```.
 
-If you which to draw edges which are geometrically longer as thicker, use
---edge-weight. The recommended value is 4. By default it is off.
+If you wish to draw edges which are geometrically longer as thicker, use
+```--edge-weight```. The recommended value is 4. By default it is off.
 
 ###Labels
 The program can scan the Minecraft world for signs following a specific format.
 If the sign is in close proximity of one of the final nodes in the graph as
-specified by the option --distance-label then the second and third row of the
+specified by the option ```--distance-label``` then the second and third row of the
 sign will be concatenated to form the label. New-lines can be inserted by
 typing "\n" in the signs text. The first row of the sign must be "-MCTRAIN-"
 without the quotes. The last row of the sign is reserved for future use.
@@ -117,18 +117,18 @@ without the quotes. The last row of the sign is reserved for future use.
 ###Components
 By default the program outputs the whole graph to one file for each of the two
 formats. The graph might contain several different components that would fit
-to be rendered using different layouts. Specifying --component-divide as an
+to be rendered using different layouts. Specifying ```--component-divide``` as an
 option will divide all strongly connected components in the graph into their
 own respective file. The files are named mctrain-graph-<sequence number>.
 
 Often there are many many components with only two end-nodes, to combine
-these into one output-file, specify --combine-pairs.
+these into one output-file, specify ```--combine-pairs```.
 
 Some components might have most of its end-nodes geometrically close, even
 though they're made up of enough rail to not be discarded in the first pass.
 
 To discard any components where the largest distance between two end-nodes is
-too small use the option --distance-min. 
+too small use the option ```--distance-min```.
 
 We use this library on GitHub when rendering your README or any other
 rich text file.
@@ -168,10 +168,10 @@ Tools -> Fit Node To Label
 There are many layouts you can use in yEd, my favorite is the orthogonal.
 
 Layout -> Orthogonal -> Classic
-	Grid: 5
-	Minimum First Segment Length: 2.0
-	Minimum Last Segment Length: 2.0
-	Minimum Segment Length: 2.0
+* Grid: 5
+* Minimum First Segment Length: 2.0
+* Minimum Last Segment Length: 2.0
+* Minimum Segment Length: 2.0
 	
 [Example 1](https://raw.githubusercontent.com/johguse/mctrain/master/examples/yed_example_1.png)
 
